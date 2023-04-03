@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leap Year Program</title>
+  </head>
+  <body>
+    <script>
+      let year = Number(prompt("Enter a year:"));
+
+      if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+        document.write(year + " is a leap year.");
+      } else {
+        document.write(year + " is not a leap year.");
+      }
+    </script>
+  </body>
+</html>
