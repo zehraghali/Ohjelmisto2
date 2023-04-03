@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dice Rolling Program</title>
+  </head>
+  <body>
+    <script>
+      let numDice = Number(prompt("Enter the number of dice rolls:"));
+      let sum = 0;
+
+      for (let i = 0; i < numDice; i++) {
+        let roll = Math.floor(Math.random() * 6) + 1;
+        sum += roll;
+      }
+
+      document.write("The sum of the dice rolls is " + sum + ".");
+    </script>
+  </body>
+</html>
