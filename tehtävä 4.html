@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sorting Hat</title>
+  </head>
+  <body>
+    <h1>Sorting Hat</h1>
+    <p>Enter your name to find out which Hogwarts house you belong to:</p>
+    <form onsubmit="return false;">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <button onclick="sort()">Sort</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      function sort() {
+        const name = document.getElementById("name").value;
+        const house = Math.floor(Math.random() * 4) + 1;
+        let message;
+        switch (house) {
+          case 1:
+            message = name + ", you are Gryffindor.";
+            break;
+          case 2:
+            message = name + ", you are Slytherin.";
+            break;
+          case 3:
+            message = name + ", you are Hufflepuff.";
+            break;
+          case 4:
+            message = name + ", you are Ravenclaw.";
+            break;
+        }
+        document.getElementById("result").innerHTML = message;
+      }
+    </script>
+  </body>
+</html>
