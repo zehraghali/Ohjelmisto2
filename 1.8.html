@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leap Year Example</title>
+  </head>
+  <body>
+    <script>
+      const startYear = Number(prompt("Enter the start year:"));
+      const endYear = Number(prompt("Enter the end year:"));
+      let leapYears = [];
+
+      for (let year = startYear; year <= endYear; year++) {
+        if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+          leapYears.push(year);
+        }
+      }
+
+      document.write("<ul>");
+      for (let i = 0; i < leapYears.length; i++) {
+        document.write(`<li>${leapYears[i]}</li>`);
+      }
+      document.write("</ul>");
+    </script>
+  </body>
+</html>

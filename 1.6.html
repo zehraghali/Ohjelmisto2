@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Square Root Example</title>
+  </head>
+  <body>
+    <script>
+      const confirmMsg = "Should I calculate the square root?";
+      const confirmResult = confirm(confirmMsg);
+
+      if (confirmResult) {
+        const num = Number(prompt("Enter a number:"));
+
+        if (num >= 0) {
+          const sqrt = Math.sqrt(num);
+          document.write(`The square root of ${num} is ${sqrt}.`);
+        } else {
+          document.write("The square root of a negative number is not defined.");
+        }
+      } else {
+        document.write("The square root is not calculated.");
+      }
+    </script>
+  </body>
+</html>
