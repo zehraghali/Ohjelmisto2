@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tehtävä 4</title>
+</head>
+<body>
+  <form id="search-form">
+    <label for="query">Enter the name of a TV series:</label>
+    <input id="query" name="q" type="text">
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    const searchForm = document.getElementById("search-form");
+    const resultsDiv = document.getElementById("results");
+
+    searchForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const userInput = document.getElementById("query").value;
+      fetch(`https://api.tvmaze.com/search/shows?q=${userInput}`)
+        .then(response => response.json())
+        .then(data => {
+          // Clear old results
+          resultsDiv.innerHTML = "";
+
+          // Create <article> elements for each TV series
+          for (const result of data) {
+            const tvShow = result.show;
+
+            const articleElement = document.createElement("article");
+
+            const nameElement = document.createElement("h2");
+            nameElement.textContent = tvShow.name;
+            articleElement.appendChild(nameElement);
+
+            const urlElement = document.createElement("a");
+            urlElement.href = tvShow.url;
+            urlElement.target = "_blank";
+            urlElement.textContent = "Details";
+            articleElement.appendChild(urlElement);
+
+            const imageElement = document.createElement("img");
+            imageElement.src = tvShow.image ? tvShow.image.medium : "https://via.placeholder.com/210x295?text=Not%20Found";
+            imageElement.alt = tvShow.name;
+            articleElement.appendChild(imageElement);
+
+            const summaryElement = document.createElement("div");
+            summaryElement.innerHTML = tvShow.summary;
+            articleElement.appendChild(summaryElement);
+
+            resultsDiv.appendChild(articleElement);
+          }
+        })
+        .catch(error => console.error(error));
+    });
+  </script>
+</body>
+</html>
